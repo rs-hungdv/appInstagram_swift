@@ -1,10 +1,10 @@
 import SwiftUI
 struct ContentView: View {
-    @State var  emaila : String = ""
-    @State var passb = ""
+    @State var  email : String = ""
+    @State var pass = ""
     var body: some View {
         NavigationView {
-            // test cmt
+        
             ZStack{
                 LinearGradient(gradient: .init(colors: [.myTopColor, .myBottomColor]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
                 VStack{
@@ -12,16 +12,16 @@ struct ContentView: View {
                     VStack{
                         Image("Instagram_logo_white")
                         
-                        Spacer().frame(height: 100)
-                        
-                        TextField("Email", text: $emaila)
+                        Spacer().frame(height: 50)
+                        LabelTextField(title: "name", text: $email)
+                        TextField("Email", text: $email)
                             .foregroundColor(Color.white)
                             .padding(.all,10)
                             .background(Color.myTextFielColor)
                         
                         Spacer().frame(height: 25)
                         
-                        TextField("Password", text: $passb)
+                        TextField("Password", text: $pass)
                             .foregroundColor(Color.white)
                             .padding(.all,10)
                             .background(Color.myTextFielColor)
@@ -29,7 +29,12 @@ struct ContentView: View {
                         Spacer().frame(height: 25)
                         
                         Button(action: {
-                            print("a")
+                            if(email.isEmpty || pass.isEmpty) {
+                                print("Chưa có gì")
+                            } else {
+                                print("a")
+                            }
+                            
                         }) {
                             HStack {
                                             Spacer()
@@ -55,7 +60,7 @@ struct ContentView: View {
                                 .foregroundColor(Color.white)
                            
                             NavigationLink(destination: Text("abced"), label: {
-                                Text(String.sign_up)
+                                Text(String.sign_in)
                                     .font(.subheadline)
                                     .fontWeight(.bold)
                                     .foregroundColor(Color.white)
